@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 import Pawn from './Pawn/Pawn'
 const getMatrixAndCreateBoard = () => {
-    let size = 8;
+    let size = 6;
     let matt = [];
     for (let i = 0; i < size; i++) {
         matt[i] = new Array(size);
