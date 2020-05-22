@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 import Pawn from './Pawn/Pawn'
 const getMatrixAndCreateBoard = () => {
-    let size = 6;
+    let size = 8
     let matt = [];
     for (let i = 0; i < size; i++) {
         matt[i] = new Array(size);
@@ -17,10 +17,10 @@ const getMatrixAndCreateBoard = () => {
     }
     let boardContent = matt.map((line, lineInd) => {
         let eachLine = line.map((el, colInd) => {
-            return <Pawn content={el} key={lineInd + colInd} />
+            return <Pawn width={100/size}content={el} key={lineInd + colInd}  />
         })
         return (
-            <div key={lineInd}>
+            <div style={{width:'50%', margin: '0 25%'}} key={lineInd}>
                 {eachLine}
             </div>
         )
@@ -33,12 +33,20 @@ const getMatrixAndCreateBoard = () => {
 const Board = () => {
     let toRender = null;
     toRender = getMatrixAndCreateBoard();
-    const [isInit, setIsInit] = useState(false);
+    const [isInit, setIsInit] = useState(true);
     return (
         <React.Fragment>
-            {isInit ? toRender :
+             {isInit ? toRender :
                 <button onClick={() => setIsInit(true)}>Init</button>}
+                <div>
+                    <table>
+                        <tr>
+                            
+                        </tr>
+                    </table>
+                </div>
         </React.Fragment>
+           
     )
 }
 

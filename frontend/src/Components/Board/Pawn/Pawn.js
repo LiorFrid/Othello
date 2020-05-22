@@ -1,11 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './Pawn.css'
-const pawn = (props) => {
+const Pawn = (props) => {
+    const [content, setContent]=useState(props.content);
     return (
-        <div className="PawnStyle">
-            {props.content}
+        <div className="PawnStyle" style={{width:props.width + "%"}} onClick={() => setContent("L")}>
+            {content}
         </div>
     )
 }
 
-export default pawn;
+export default Pawn;

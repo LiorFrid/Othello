@@ -4,7 +4,7 @@ import { NavLink } from 'react-router-dom'
 import 'bootstrap/dist/css/bootstrap.min.css';
 const Menu = () => {
   return (
-    <div className='App tc f3' >
+    <div className='App tc f3'  style={{marginBottom:'36px'}}>
       <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark" >
         <Navbar.Brand >Othello</Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
