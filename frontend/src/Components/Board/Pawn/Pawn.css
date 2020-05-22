@@ -1,0 +1,16 @@
+.PawnStyle{
+    width:5%;
+    height: 72px;
+    background-color:rgb(73, 70, 70);
+    text-align: center;
+    font-size: 44px;
+    display: inline-flex;
+    flex-flow: column;
+    border-style: outset;
+}
+
+.PawnStyle:hover{
+    
+    background-color:rgb(199, 188, 169);
+    
+}
