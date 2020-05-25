@@ -1,7 +1,10 @@
 import React, { useState } from 'react'
-import Board from '../Components/Board/Board'
-import InitGame from '../Components/InitGame/InitGame'
+
+import Board from '../../Components/Board/Board'
+import InitGame from '../../Components/InitGame/InitGame'
+
 const Game = (props) => {
+    console.log('[Game] render')
     const [mattGame, setMattGame] = useState([]);
     const [isInit, setIsInit] = useState(false);
     const [boardSize, setBoardSize] = useState(null);
@@ -29,12 +32,11 @@ const Game = (props) => {
 
     let toRender = isInit ? <Board size={boardSize} matt={mattGame} />
         : <InitGame intialiazeFunc={initGameHandeler} />
-        
+
     return (
         <React.Fragment>
             {toRender}
         </React.Fragment>
-
     )
 }
 
