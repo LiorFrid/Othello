@@ -1,11 +1,11 @@
 .PawnStyle{
     height: 72px;
+    margin: auto;
     background-color:lightgreen;
     text-align: center;
     font-size: 44px;
     color: white;
-    display: inline-flex;
-    flex-flow: column;
+    
     border-style: outset;
     
 }
