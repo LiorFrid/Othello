@@ -10,10 +10,10 @@ button{
     margin-top: 8px;
     width: 30%;
     height: 48px;
-    background-color: lightgreen;
+    background-color: lightblue;
     border-style: outset;
 
 }
 button:hover{
-    background-color: lime;
+    background-color: lightskyblue;
 }
