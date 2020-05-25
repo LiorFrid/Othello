@@ -1,4 +1,5 @@
 Othello Project.
+
 1.Clone this project to your computer
 2.To start the client go to frontend directory and run
     *npm install
