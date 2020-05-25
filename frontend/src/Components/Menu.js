@@ -16,7 +16,7 @@ const Menu = () => {
 
           </Nav>
           <Nav className="ml-auto">
-            <Nav.Item><NavLink className="nav-link" to={"/Login"}>Login</NavLink></Nav.Item>
+            <Nav.Item><NavLink className="nav-link" to={"/Login"}>Login\ SignUp</NavLink></Nav.Item>
           </Nav>
 
         </Navbar.Collapse>

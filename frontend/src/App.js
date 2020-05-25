@@ -5,9 +5,10 @@ import { BrowserRouter } from "react-router-dom";
 
 const App = () => {
   return (
-    <BrowserRouter>
-      <Main />
-    </BrowserRouter>
+      <BrowserRouter>
+        <Main />
+      </BrowserRouter>
+
   );
 }
 

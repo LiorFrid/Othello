@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 import Pawn from './Pawn/Pawn'
-const getMatrixAndCreateBoard = () => {
-    let size = 8
+const getMatrixAndCreateBoard = (size) => {
+       
     let matt = [];
     for (let i = 0; i < size; i++) {
         matt[i] = new Array(size);
@@ -30,21 +30,13 @@ const getMatrixAndCreateBoard = () => {
 
 
 
-const Board = () => {
+const Board = (props) => {
     let toRender = null;
-    toRender = getMatrixAndCreateBoard();
-    const [isInit, setIsInit] = useState(true);
+    toRender = getMatrixAndCreateBoard(props.size);
     return (
         <React.Fragment>
-             {isInit ? toRender :
-                <button onClick={() => setIsInit(true)}>Init</button>}
-                <div>
-                    <table>
-                        <tr>
-                            
-                        </tr>
-                    </table>
-                </div>
+             {toRender}
+                
         </React.Fragment>
            
     )
