@@ -11,3 +11,17 @@
 .PawnStyle:hover{
     background-color:lightskyblue;
 }
+
+.PawnDisabled{
+    height: 72px;
+    margin: auto;
+    background-color:lightgray;
+    text-align: center;
+    font-size: 44px;
+    color: black;
+    border-style: outset;
+}
+
+.PawnDisabled:hover{
+    background-color:gray;
+}

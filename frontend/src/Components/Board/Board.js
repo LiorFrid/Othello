@@ -5,7 +5,7 @@ import './Board.css'
 const getMatrixAndCreateBoard = (size, matt) => {
     let boardContent = matt.map((line, lineInd) => {
         let eachLine = line.map((el, colInd) => {
-            return <Pawn width={100 / size} content={el ? el : " "} key={lineInd + colInd} />
+            return <Pawn width={100 / size} disable ={el.disable} content={el.pawn ? el.pawn : " "} key={lineInd + colInd} />
         })
         return (
             <div className='Line' key={lineInd}>
