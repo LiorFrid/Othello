@@ -9,8 +9,8 @@ export const getInitBoardGame = (size) => {
                 disable: true,
                 pawn: null
             }
-            if(j%2){
-                matt[i][j].disable=false;
+            if (j % 2) {
+                matt[i][j].disable = false;
             }
         }
     }

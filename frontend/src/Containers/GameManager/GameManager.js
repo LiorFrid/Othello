@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 import Board from '../../Components/Board/Board';
 import InitGame from '../../Components/InitGame/InitGame';
-import * as GameLogic from './GameLogic/Game';
+import * as GameLogic from '../../GameLogic/GameLogic';
 
 const Game = (props) => {
     console.log('[Game] render')
