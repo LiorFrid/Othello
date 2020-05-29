@@ -7,7 +7,6 @@ import Menu from '../../Components/Menu';
 import Game from '../GameManager/GameManager'
 
 const Main = () => {
-    console.log('[Main] render')
     return (
        
         <Router>

@@ -1,11 +1,13 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './Pawn.css'
 const Pawn = (props) => {
-    const [content, setContent]=useState(props.content);
-    let style = props.disable? "PawnDisabled": "PawnStyle";
+    let style = props.disable ? "PawnDisabled" : "PawnStyle";
     return (
-        <button className={style} disabled={props.disable} style={{width:props.width + "%"}} onClick={() => setContent("L")}>
-            {content}
+        <button className={style}
+            disabled={props.disable}
+            style={{ width: props.width + "%" }}
+            onClick={props.setMove}>
+            {props.content}
         </button>
     )
 }

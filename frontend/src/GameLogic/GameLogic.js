@@ -6,11 +6,8 @@ export const getInitBoardGame = (size) => {
         matt[i] = new Array(size);
         for (let j = 0; j < size; j++) {
             matt[i][j] = {
-                disable: true,
+                disable: false,
                 pawn: null
-            }
-            if (j % 2) {
-                matt[i][j].disable = false;
             }
         }
     }
@@ -25,5 +22,11 @@ export const getInitBoardGame = (size) => {
 }
 
 export const getEnableMoves = (matrix, currentPlayerPawn) => {
+    console.log(matrix.length)
+    matrix[4][5].disable = false;
+    return matrix;
+}
 
+export const setMove = (matt, coords, currentPawn) => {
+    
 }
