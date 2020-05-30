@@ -21,12 +21,36 @@ export const getInitBoardGame = (size) => {
     return matt;
 }
 
-export const getEnableMoves = (matrix, currentPlayerPawn) => {
-    console.log(matrix.length)
-    matrix[4][5].disable = false;
-    return matrix;
+export const getMatrixWithPossibleMoves = (matrix, currentPlayerPawn) => {
+    const boardLength = matrix.length;
+    let isEnable;
+    for (let i = 0; i < boardLength; i++) {
+        for (let j = 0; j < boardLength; j++) {
+            isEnable = false;
+            if (!matrix[i][j].pawn) {
+                isEnable = isEnable || checkForPossibleMovesByDirecton(matrix, boardLength, { row: i, col: j }, { row: -1, col: -1 }, currentPlayerPawn);
+                isEnable = isEnable || checkForPossibleMovesByDirecton(matrix, boardLength, { row: i, col: j }, { row: -1, col: 0 }, currentPlayerPawn);
+                isEnable = isEnable || checkForPossibleMovesByDirecton(matrix, boardLength, { row: i, col: j }, { row: -1, col: 1 }, currentPlayerPawn);
+
+                isEnable = isEnable || checkForPossibleMovesByDirecton(matrix, boardLength, { row: i, col: j }, { row: 0, col: 1 }, currentPlayerPawn);
+                isEnable = isEnable || checkForPossibleMovesByDirecton(matrix, boardLength, { row: i, col: j }, { row: 0, col: -1 }, currentPlayerPawn);
+
+                isEnable = isEnable || checkForPossibleMovesByDirecton(matrix, boardLength, { row: i, col: j }, { row: 1, col: -1 }, currentPlayerPawn);
+                isEnable = isEnable || checkForPossibleMovesByDirecton(matrix, boardLength, { row: i, col: j }, { row: 1, col: 0 }, currentPlayerPawn);
+                isEnable = isEnable || checkForPossibleMovesByDirecton(matrix, boardLength, { row: i, col: j }, { row: 1, col: 1 }, currentPlayerPawn);
+            }
+            matrix[i][j].disable = !isEnable;
+        }
+    }
+
+    return matrix
+}
+
+const checkForPossibleMovesByDirecton = (boardLength, position, direction, currentPawn) => {
+    return true
+
 }
 
 export const setMove = (matt, coords, currentPawn) => {
-    
+
 }

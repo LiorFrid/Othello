@@ -5,23 +5,18 @@
     text-align: center;
     font-size: 44px;
     color: black;
-    border-style: outset;
+    border:outset;
+    border-color:lightblue ;
 }
 
-.PawnStyle:hover{
-    background-color:lightskyblue;
+.PawnStyleEnable:hover{
+    background-color:lightgreen;
 }
 
-.PawnDisabled{
-    height: 72px;
-    margin: auto;
-    background-color:lightgray;
-    text-align: center;
-    font-size: 44px;
-    color: black;
-    border-style: outset;
+.PawnStyleDisable:hover{
+    background-color:lightcoral;
+    
 }
 
-.PawnDisabled:hover{
-    background-color:gray;
+.PawnStyleDisable{
 }

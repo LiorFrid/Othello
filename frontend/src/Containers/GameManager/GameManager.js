@@ -14,7 +14,7 @@ const Game = (props) => {
 
     const initGameHandeler = (size) => {
         let InitMatt = GameLogic.getInitBoardGame(size);
-        let InitMattWithEnableMoves = GameLogic.getEnableMoves(InitMatt, currentPawn)
+        let InitMattWithEnableMoves = GameLogic.getMatrixWithPossibleMoves(InitMatt, currentPawn)
         setBoardSize(size);
         setIsInit(true);
         setMattGame(InitMattWithEnableMoves);
@@ -22,14 +22,18 @@ const Game = (props) => {
 
     const setMove = (coords) => {
         let matt = clone(mattGame);
-        matt = GameLogic.setMove(matt, coords, currentPawn);
+        //matt = GameLogic.setMove(matt, coords, currentPawn);
         let currentLocalPawn = currentPawn === 'X' ? 'O' : 'X'
-        matt = GameLogic.getEnableMoves(matt, currentLocalPawn);
+        //matt = GameLogic.getEnableMoves(matt, currentLocalPawn);
+        matt[coords.lineInd][coords.colInd].pawn = currentLocalPawn
         setCurrentPawn(currentLocalPawn);
         setMattGame(matt);
     }
 
-    let toRender = isInit ? <Board size={boardSize} matt={mattGame} dispatchMove={setMove} />
+    let toRender = isInit ?
+        <div>
+            <Board size={boardSize} matt={mattGame} dispatchMove={setMove} />
+        </div>
         : <InitGame intialiazeFunc={initGameHandeler} />
 
     return (

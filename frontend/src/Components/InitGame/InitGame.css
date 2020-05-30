@@ -11,7 +11,7 @@ button{
     width: 30%;
     height: 48px;
     background-color: lightblue;
-    border-style: outset;
+    border: outset;
 
 }
 button:hover{

@@ -2,7 +2,8 @@ import React from 'react';
 
 import Pawn from './Pawn/Pawn'
 import './Board.css'
-const getMatrixAndCreateBoard = (size, matt, dispatchMove) => {
+
+const CreateBoard = (size, matt, dispatchMove) => {
     let boardContent = matt.map((line, lineInd) => {
         let eachLine = line.map((el, colInd) => {
             return <Pawn width={100 / size}
@@ -20,19 +21,14 @@ const getMatrixAndCreateBoard = (size, matt, dispatchMove) => {
     return boardContent;
 }
 
-
-
 const Board = (props) => {
     let toRender = null;
-    toRender = getMatrixAndCreateBoard(props.size, props.matt, props.dispatchMove);
+    toRender = CreateBoard(props.size, props.matt, props.dispatchMove);
     return (
         <div style={{ width: '50%', marginLeft: '25%' }}>
             {toRender}
-
         </div>
-
     )
 }
-
 
 export default Board;
