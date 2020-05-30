@@ -14,7 +14,7 @@ const Game = (props) => {
 
     const initGameHandeler = (size) => {
         let InitMatt = GameLogic.getInitBoardGame(size);
-        let InitMattWithEnableMoves = GameLogic.getMatrixWithPossibleMoves(InitMatt, currentPawn)
+        let InitMattWithEnableMoves = GameLogic.getMatrixWithPossibleMoves(InitMatt, currentPawn).matrix
         setBoardSize(size);
         setIsInit(true);
         setMattGame(InitMattWithEnableMoves);

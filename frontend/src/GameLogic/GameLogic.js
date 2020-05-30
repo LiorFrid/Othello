@@ -24,26 +24,32 @@ export const getInitBoardGame = (size) => {
 export const getMatrixWithPossibleMoves = (matrix, currentPlayerPawn) => {
     const boardLength = matrix.length;
     let isEnable;
+    let isCurrentPlayerHasMoves = false;
     for (let i = 0; i < boardLength; i++) {
         for (let j = 0; j < boardLength; j++) {
             isEnable = false;
             if (!matrix[i][j].pawn) {
-                isEnable = isEnable || checkForPossibleMovesByDirecton(matrix, boardLength, { row: i, col: j }, { row: -1, col: -1 }, currentPlayerPawn);
-                isEnable = isEnable || checkForPossibleMovesByDirecton(matrix, boardLength, { row: i, col: j }, { row: -1, col: 0 }, currentPlayerPawn);
-                isEnable = isEnable || checkForPossibleMovesByDirecton(matrix, boardLength, { row: i, col: j }, { row: -1, col: 1 }, currentPlayerPawn);
+                isEnable |= checkForPossibleMovesByDirecton(matrix, boardLength, { row: i, col: j }, { row: -1, col: -1 }, currentPlayerPawn);
+                isEnable |= checkForPossibleMovesByDirecton(matrix, boardLength, { row: i, col: j }, { row: -1, col: 0 }, currentPlayerPawn);
+                isEnable |= checkForPossibleMovesByDirecton(matrix, boardLength, { row: i, col: j }, { row: -1, col: 1 }, currentPlayerPawn);
 
-                isEnable = isEnable || checkForPossibleMovesByDirecton(matrix, boardLength, { row: i, col: j }, { row: 0, col: 1 }, currentPlayerPawn);
-                isEnable = isEnable || checkForPossibleMovesByDirecton(matrix, boardLength, { row: i, col: j }, { row: 0, col: -1 }, currentPlayerPawn);
+                isEnable |= checkForPossibleMovesByDirecton(matrix, boardLength, { row: i, col: j }, { row: 0, col: 1 }, currentPlayerPawn);
+                isEnable |= checkForPossibleMovesByDirecton(matrix, boardLength, { row: i, col: j }, { row: 0, col: -1 }, currentPlayerPawn);
 
-                isEnable = isEnable || checkForPossibleMovesByDirecton(matrix, boardLength, { row: i, col: j }, { row: 1, col: -1 }, currentPlayerPawn);
-                isEnable = isEnable || checkForPossibleMovesByDirecton(matrix, boardLength, { row: i, col: j }, { row: 1, col: 0 }, currentPlayerPawn);
-                isEnable = isEnable || checkForPossibleMovesByDirecton(matrix, boardLength, { row: i, col: j }, { row: 1, col: 1 }, currentPlayerPawn);
+                isEnable |= checkForPossibleMovesByDirecton(matrix, boardLength, { row: i, col: j }, { row: 1, col: -1 }, currentPlayerPawn);
+                isEnable |= checkForPossibleMovesByDirecton(matrix, boardLength, { row: i, col: j }, { row: 1, col: 0 }, currentPlayerPawn);
+                isEnable |= checkForPossibleMovesByDirecton(matrix, boardLength, { row: i, col: j }, { row: 1, col: 1 }, currentPlayerPawn);
             }
+
+            isCurrentPlayerHasMoves |= isEnable;
             matrix[i][j].disable = !isEnable;
         }
     }
 
-    return matrix
+    return {
+        matrix,
+        isCurrentPlayerHasMoves
+    }
 }
 
 const checkForPossibleMovesByDirecton = (boardLength, position, direction, currentPawn) => {
