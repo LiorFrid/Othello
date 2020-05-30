@@ -22,10 +22,11 @@ const Game = (props) => {
 
     const setMove = (coords) => {
         let matt = clone(mattGame);
-        //matt = GameLogic.setMove(matt, coords, currentPawn);
+        matt = GameLogic.setMove(matt, coords, currentPawn);
+
+        matt[coords.lineInd][coords.colInd].pawn = currentPawn
         let currentLocalPawn = currentPawn === 'X' ? 'O' : 'X'
-        //matt = GameLogic.getEnableMoves(matt, currentLocalPawn);
-        matt[coords.lineInd][coords.colInd].pawn = currentLocalPawn
+        matt = GameLogic.getMatrixWithPossibleMoves(matt, currentLocalPawn).matrix
         setCurrentPawn(currentLocalPawn);
         setMattGame(matt);
     }

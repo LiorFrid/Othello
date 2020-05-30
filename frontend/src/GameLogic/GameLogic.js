@@ -18,6 +18,7 @@ export const getInitBoardGame = (size) => {
     matt[boardCenter - 1][boardCenter - 1].pawn = 'X'
     matt[boardCenter - 1][boardCenter].pawn = 'O'
 
+
     return matt;
 }
 
@@ -52,11 +53,107 @@ export const getMatrixWithPossibleMoves = (matrix, currentPlayerPawn) => {
     }
 }
 
-const checkForPossibleMovesByDirecton = (boardLength, position, direction, currentPawn) => {
-    return true
+const checkForPossibleMovesByDirecton = (matrix, boardLength, position, direction, currentPawn) => {
+    let isEnable = true;
+    let arrivalPawn = currentPawn === 'X' ? 'O' : 'X';
+    let posOfPawnIsNextTO = {
+        row: position.row + direction.row,
+        col: position.col + direction.col
+    }
+
+    let isNextInBorders = (posOfPawnIsNextTO.col >= 0 && posOfPawnIsNextTO.col < boardLength) &&
+        (posOfPawnIsNextTO.row >= 0 && posOfPawnIsNextTO.row < boardLength);
+    let isNextToIsTheArrivalPawn = false;
+    if (isNextInBorders) {
+        isNextToIsTheArrivalPawn = matrix[posOfPawnIsNextTO.row][posOfPawnIsNextTO.col].pawn === arrivalPawn;
+    }
+
+    if (!isNextToIsTheArrivalPawn) {
+        isEnable = false;
+
+    }
+
+    if (isEnable) {
+        let isToContinue = true;
+        let posToCheck = {
+            row: posOfPawnIsNextTO.row + direction.row,
+            col: posOfPawnIsNextTO.col + direction.col
+        }
+        while (isToContinue) {
+            if (!((posToCheck.col >= 0 && posToCheck.col < boardLength) &&
+                (posToCheck.row >= 0 && posToCheck.row < boardLength))) {
+                isToContinue = false;
+                isEnable = false;
+            }
+            else if (matrix[posToCheck.row][posToCheck.col].pawn === null) {
+                isToContinue = false;
+                isEnable = false;
+            }
+            else if (matrix[posToCheck.row][posToCheck.col].pawn === currentPawn) {
+                isToContinue = false;
+                isEnable = true;
+            }
+
+            posToCheck.row += direction.row;
+            posToCheck.col += direction.col;
+        }
+    }
+
+    return isEnable;
 
 }
 
-export const setMove = (matt, coords, currentPawn) => {
+export const setMove = (matrix, coords, currentPawn) => {
+    let position = {
+        row: coords.lineInd,
+        col: coords.colInd
+    }
+    let boardLength = matrix.length;
+    if (checkForPossibleMovesByDirecton(matrix, boardLength, position, { row: -1, col: -1 }, currentPawn)) {
+        eatArrivalPawns(matrix, boardLength, position, { row: -1, col: -1 }, currentPawn)
+    }
 
+    if (checkForPossibleMovesByDirecton(matrix, boardLength, position, { row: -1, col: 0 }, currentPawn)) {
+        eatArrivalPawns(matrix, boardLength, position, { row: -1, col: 0 }, currentPawn)
+    }
+
+    if (checkForPossibleMovesByDirecton(matrix, boardLength, position, { row: -1, col: 1 }, currentPawn)) {
+        eatArrivalPawns(matrix, boardLength, position, { row: -1, col: 1 }, currentPawn)
+    }
+
+    if (checkForPossibleMovesByDirecton(matrix, boardLength, position, { row: 0, col: 1 }, currentPawn)) {
+        eatArrivalPawns(matrix, boardLength, position, { row: 0, col: 1 }, currentPawn)
+    }
+
+    if (checkForPossibleMovesByDirecton(matrix, boardLength, position, { row: 0, col: -1 }, currentPawn)) {
+        eatArrivalPawns(matrix, boardLength, position, { row: 0, col: -1 }, currentPawn)
+    }
+
+    if (checkForPossibleMovesByDirecton(matrix, boardLength, position, { row: 1, col: -1 }, currentPawn)) {
+        eatArrivalPawns(matrix, boardLength, position, { row: 1, col: -1 }, currentPawn)
+    }
+
+    if (checkForPossibleMovesByDirecton(matrix, boardLength, position, { row: 1, col: 0 }, currentPawn)) {
+        eatArrivalPawns(matrix, boardLength, position, { row: 1, col: 0 }, currentPawn)
+    }
+
+    if (checkForPossibleMovesByDirecton(matrix, boardLength, position, { row: 1, col: 1 }, currentPawn)) {
+        eatArrivalPawns(matrix, boardLength, position, { row: 1, col: 1 }, currentPawn)
+    }
+
+    return matrix
+}
+
+const eatArrivalPawns = (matrix, boardLength, position, direction, currentPawn) => {
+
+    let posToEat = {
+        row: position.row + direction.row,
+        col: position.col + direction.col
+    }
+    let arrivalPawn = currentPawn === 'X' ? 'O' : 'X'
+    while (matrix[posToEat.row][posToEat.col].pawn === arrivalPawn) {
+        matrix[posToEat.row][posToEat.col].pawn = currentPawn;
+        posToEat.row += direction.row;
+        posToEat.col += direction.col;
+    }
 }
