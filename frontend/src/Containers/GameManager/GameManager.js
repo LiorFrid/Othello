@@ -26,13 +26,23 @@ const Game = (props) => {
 
         matt[coords.lineInd][coords.colInd].pawn = currentPawn
         let currentLocalPawn = currentPawn === 'X' ? 'O' : 'X'
-        matt = GameLogic.getMatrixWithPossibleMoves(matt, currentLocalPawn).matrix
+        let result = GameLogic.getMatrixWithPossibleMoves(matt, currentLocalPawn)
+        matt = result.matrix;
+        if (!result.isCurrentPlayerHasMoves) {
+            currentLocalPawn = currentLocalPawn === 'X' ? 'O' : 'X'
+            result = GameLogic.getMatrixWithPossibleMoves(matt, currentLocalPawn)
+            matt = result.matrix;
+            if (!result.isCurrentPlayerHasMoves) {
+                alert("Game Over")
+            }
+        }
         setCurrentPawn(currentLocalPawn);
         setMattGame(matt);
     }
 
     let toRender = isInit ?
         <div>
+            <p style={{ marginLeft: '48%' }}>Turn of : {currentPawn}</p>
             <Board size={boardSize} matt={mattGame} dispatchMove={setMove} />
         </div>
         : <InitGame intialiazeFunc={initGameHandeler} />
