@@ -41,10 +41,10 @@ const Game = (props) => {
     }
 
     let toRender = isInit ?
-        <div>
+        <React.Fragment>
             <p style={{ marginLeft: '48%' }}>Turn of : {currentPawn}</p>
             <Board size={boardSize} matt={mattGame} dispatchMove={setMove} />
-        </div>
+        </React.Fragment>
         : <InitGame intialiazeFunc={initGameHandeler} />
 
     return (

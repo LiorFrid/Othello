@@ -7,7 +7,7 @@ const Pawn = (props) => {
     return (
         <button className={classes.join(" ")}
             disabled={props.disable}
-            style={{ width: props.width + "%" }}
+            style={{ width: props.width + "%", height: props.height + 'px' }}
             onClick={props.setMove}>
             {props.content}
         </button>
