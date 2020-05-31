@@ -157,3 +157,24 @@ const eatArrivalPawns = (matrix, boardLength, position, direction, currentPawn) 
         posToEat.col += direction.col;
     }
 }
+
+export const countPawns = (matrix) => {
+    let conuntPawnO = 0;
+    let conuntPawnX = 0;
+    let boardLength = matrix.length;
+    for (let i = 0; i < boardLength; i++) {
+        for (let j = 0; j < boardLength; j++) {
+            if (matrix[i][j].pawn === 'X') {
+                conuntPawnX++;
+            }
+            else if (matrix[i][j].pawn === 'O') {
+                conuntPawnO++;
+            }
+        }
+    }
+
+    return {
+        O: conuntPawnO,
+        X: conuntPawnX
+    }
+}
