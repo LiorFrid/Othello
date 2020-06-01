@@ -27,7 +27,7 @@ const Board = (props) => {
     let toRender = null;
     toRender = CreateBoard(props.size, props.matt, props.dispatchMove);
     return (
-        <div style={{ height: '50%', width: '50%', marginLeft: '25%' }}>
+        <div style={{ height: '50%', width: '50%'}}>
             {toRender}
         </div>
     )

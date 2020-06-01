@@ -1,0 +1,13 @@
+.Player{
+    width: 10%;
+    height: 96px;
+    margin-left:5% ;
+    margin-right:5% ;
+    margin-top: 10%;
+    background-color: lightblue;
+  
+    
+    border: outset;
+    text-align: center;
+
+}

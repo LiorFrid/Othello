@@ -1,0 +1,6 @@
+.BoardConatainer{
+    display:flex;
+    flex-flow: row;
+    width: auto;
+    margin-left: 7.5%;
+}

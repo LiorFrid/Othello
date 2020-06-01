@@ -1,7 +1,6 @@
 
 export const getInitBoardGame = (size) => {
     let matt = []
-
     for (let i = 0; i < size; i++) {
         matt[i] = new Array(size);
         for (let j = 0; j < size; j++) {
@@ -18,7 +17,6 @@ export const getInitBoardGame = (size) => {
     matt[boardCenter - 1][boardCenter - 1].pawn = 'X'
     matt[boardCenter - 1][boardCenter].pawn = 'O'
 
-
     return matt;
 }
 
@@ -33,10 +31,8 @@ export const getMatrixWithPossibleMoves = (matrix, currentPlayerPawn) => {
                 isEnable |= checkForPossibleMovesByDirecton(matrix, boardLength, { row: i, col: j }, { row: -1, col: -1 }, currentPlayerPawn);
                 isEnable |= checkForPossibleMovesByDirecton(matrix, boardLength, { row: i, col: j }, { row: -1, col: 0 }, currentPlayerPawn);
                 isEnable |= checkForPossibleMovesByDirecton(matrix, boardLength, { row: i, col: j }, { row: -1, col: 1 }, currentPlayerPawn);
-
                 isEnable |= checkForPossibleMovesByDirecton(matrix, boardLength, { row: i, col: j }, { row: 0, col: 1 }, currentPlayerPawn);
                 isEnable |= checkForPossibleMovesByDirecton(matrix, boardLength, { row: i, col: j }, { row: 0, col: -1 }, currentPlayerPawn);
-
                 isEnable |= checkForPossibleMovesByDirecton(matrix, boardLength, { row: i, col: j }, { row: 1, col: -1 }, currentPlayerPawn);
                 isEnable |= checkForPossibleMovesByDirecton(matrix, boardLength, { row: i, col: j }, { row: 1, col: 0 }, currentPlayerPawn);
                 isEnable |= checkForPossibleMovesByDirecton(matrix, boardLength, { row: i, col: j }, { row: 1, col: 1 }, currentPlayerPawn);
@@ -70,7 +66,6 @@ const checkForPossibleMovesByDirecton = (matrix, boardLength, position, directio
 
     if (!isNextToIsTheArrivalPawn) {
         isEnable = false;
-
     }
 
     if (isEnable) {
@@ -100,7 +95,6 @@ const checkForPossibleMovesByDirecton = (matrix, boardLength, position, directio
     }
 
     return isEnable;
-
 }
 
 export const setMove = (matrix, coords, currentPawn) => {

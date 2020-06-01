@@ -7,6 +7,8 @@ import Player from '../../Components/Player/Player'
 import InitGame from '../../Components/InitGame/InitGame';
 import * as GameLogic from '../../GameLogic/GameLogic';
 
+import './GameManager.css'
+
 const Game = (props) => {
     const [mattGame, setMattGame] = useState([]);
     const [isInit, setIsInit] = useState(false);
@@ -46,12 +48,18 @@ const Game = (props) => {
 
     let toRender = isInit ?
         <React.Fragment>
-            <p style={{ marginLeft: '48%' }}>Turn of : {currentPawn}</p>
-            <Player name="Lior" pawn='X' score={countPawns.X}/>
-            <Player name="Com" pawn='O' score={countPawns.O}/>
 
-            <Board size={boardSize} matt={mattGame} dispatchMove={setMove} />
+            <p style={{ marginLeft: '48%' }}>Turn of : {currentPawn}</p>
+
+            <div className="BoardConatainer">
+                <Player name="Lior" pawn='X' score={countPawns.X} />
+
+                <Board size={boardSize} matt={mattGame} dispatchMove={setMove} />
+                <Player name="Com" pawn='O' score={countPawns.O} />
+
+            </div>
         </React.Fragment>
+
         : <InitGame intialiazeFunc={initGameHandeler} />
 
     return (
